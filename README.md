@@ -1,82 +1,105 @@
-# Crime Detection Using Surveillance Cameras
+# 🧠 Human Activity Recognition using Deep Learning
 
-## Project Overview
-
-This project aims to automatically detect different types of crimes from surveillance camera footage using deep learning and computer vision techniques.  
-It can identify activities like assault, robbery, shoplifting, vandalism, and more by analyzing video frames extracted from security cameras.
-
-## What This Project Does
-
-- Extracts frames from videos of various crime scenes.
-- Detects people and objects in these frames using a pre-trained model.
-- Enhances the quality of these images to improve detection.
-- Trains a neural network to classify different types of criminal activities based on the enhanced images.
-
-## What You Will Find in This Repository
-
-- **Code files** for extracting frames from videos.
-- **Scripts** for detecting objects in frames using YOLOv5.
-- **Image enhancement** code applying filters and contrast improvement.
-- **Trained model** code to classify crime types.
-- **Dataset folder structure** showing categories of crimes like Assault, Robbery, Shoplifting, etc.
-- **Example output images** showing detected objects and enhanced frames.
-- **Plots** of training and validation accuracy and loss for the model.
-
-## How to Use
-
-1. Put your video dataset in the folder with subfolders for each crime category.  
-2. Run the frame extraction script to convert videos into images.  
-3. Use the object detection script to find important objects in each frame.  
-4. Enhance these images with the provided filters to improve clarity.  
-5. Train the classification model using the enhanced images to recognize crime types.  
-6. Check the output folders to see detected and enhanced images, as well as model training results.
-
-## Dataset Structure
-
-Dataset/
-├── Abuse/
-
-├── Arrest/
-
-├── Arson/
-
-├── Assault/
-
-├── Burglary/
-
-├── Explosion/
-
-├── Fighting/
-
-├── RoadAccidents/
-
-├── Robbery/
-
-├── Shooting/
-
-├── Shoplifting/
-
-├── Stealing/
-
-└── Vandalism/
-
-
-Each folder contains video clips related to that crime.
-
-## Results
-
-- The model achieves high accuracy in identifying different crimes.
-- Training and validation plots are included to show model performance.
-- Enhanced images help improve detection accuracy.
+This project implements a **Deep Learning-based multi-class classification model** designed to recognize and differentiate between various human activities such as **Abuse, Arrest, Shoplifting**, and other behavioral actions using video frame data.
 
 ---
 
-This system can help automate monitoring of surveillance footage to quickly identify potential crimes and alert authorities.
+## 🏗️ Model Description
+
+The model utilizes a **Convolutional Neural Network (CNN)** built with **TensorFlow/Keras** for spatial feature extraction and classification.  
+Each input frame is **preprocessed (resized, normalized, tensorized)** and passed through multiple convolutional and pooling layers before classification.
+
+**Key Components:**
+- **Convolutional Layers:** Extract visual and motion-related features.
+- **Activation (ReLU):** Introduce non-linearity.
+- **Pooling Layers:** Reduce dimensionality and prevent overfitting.
+- **Flatten + Dense Layers:** Map learned features to class probabilities.
+- **Output Layer (Softmax):** Generates final activity predictions.
 
 ---
 
-## Author
+## ⚙️ Training Strategy
 
-Sandhya Rani N 
-November 2025
+The model was trained using **5-Fold Cross Validation** to ensure reliability and generalization.  
+Each fold trains on 80% of the data and validates on the remaining 20%, rotating until all subsets are tested.
+
+---
+
+## 📈 Performance Metrics
+
+### **1️⃣ Training vs Validation Accuracy**
+![Training vs Validation Accuracy](outputs/Final_outputs.pdf)
+
+- Accuracy steadily increases across all folds.
+- Both training and validation curves align closely → minimal overfitting.
+- Final accuracy reaches near 95–100% across all folds.
+
+---
+
+### **2️⃣ Training vs Validation Loss**
+![Training vs Validation Loss](outputs/Final_outputs.pdf)
+
+- Loss decreases rapidly and stabilizes at a low value.
+- Similar convergence trends across folds indicate consistent model learning.
+- Confirms robust feature extraction and stable optimization.
+
+---
+
+### **3️⃣ Confusion Matrix**
+![Confusion Matrix](outputs/CM_outputs.pdf)
+
+- Diagonal dominance shows most actions correctly classified.
+- Minor off-diagonal confusion only between visually similar actions.
+- Indicates strong performance and reliable behavior detection.
+
+---
+
+### **4️⃣ Sample Predictions**
+![Sample Predictions](outputs/Final_outputs.pdf)
+
+- Displays the model’s real-time classification output on video frames.
+- Demonstrates correct recognition of activities such as *Shoplifting* or *Abuse*.
+- Validates the practical deployment potential in surveillance contexts.
+
+---
+
+## 🧮 Performance Summary
+
+| Metric | Average (Across 5 Folds) |
+|---------|--------------------------|
+| Accuracy | 0.99 |
+| Precision | High |
+| Recall | High |
+| F1-Score | Excellent |
+
+---
+
+## 💡 Why This Model Works Well
+- CNN layers capture spatial and motion cues essential for human activity recognition.  
+- 5-Fold validation ensures stability and robustness.  
+- Real-world frames enable adaptation to natural lighting and environment variations.
+
+---
+
+## 📊 Future Improvements
+- Integrate **temporal modeling (LSTM/3D CNNs)** for continuous action recognition.
+- Deploy as a real-time **surveillance or safety monitoring system**.
+- Expand dataset with more complex activity types.
+
+---
+
+## 🧑‍💻 Developed Using
+- **TensorFlow / Keras**
+- **OpenCV**
+- **Python 3.10**
+- **Matplotlib / NumPy / Pandas**
+
+---
+
+## 🏁 Conclusion
+
+This project demonstrates the effectiveness of a CNN-based system in identifying human actions from real-world video data.  
+Its high accuracy and strong validation results make it suitable for **security, retail analytics, and behavioral monitoring** applications.
+
+---
 
