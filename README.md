@@ -46,7 +46,7 @@ Each fold trains on 80% of the data and validates on the remaining 20%, rotating
 ---
 
 ### **3️⃣ Confusion Matrix**
-![Confusion Matrix](outputs/CM_outputs.pdf)
+![Confusion Matrix](outputs/CM13_outputs.pdf)
 
 - Diagonal dominance shows most actions correctly classified.
 - Minor off-diagonal confusion only between visually similar actions.
